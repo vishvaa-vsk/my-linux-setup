@@ -1,0 +1,7 @@
+snap-store
+gnome-3-38-2004
+gtk-common-themes
+snapd-desktop-integration
+bare                       
+core20                       
+snapd
