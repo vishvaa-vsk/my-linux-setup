@@ -1,0 +1,47 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Dark Pro Mix",
+    "workbench.productIconTheme": "fluent-icons",
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "dart.flutterHotReloadOnSave": "always",
+    "editor.fontFamily": "\"Fira Code\",'Fira Code Retina','Cascadia Code','Courier New',monospace,Consolas",
+    // "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "450",
+    "editor.mouseWheelZoom": true,
+    "terminal.integrated.fontFamily": "FiraCode NF Retina",
+    // "editor.fontLigatures": true,
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "liveServer.settings.donotShowInfoMsg": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.gpuAcceleration": "off",
+    "editor.minimap.enabled": false,
+    "liveServer.settings.donotVerifyTags": true,
+    "dart.debugExternalPackageLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "workbench.startupEditor": "none",
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "editor.accessibilitySupport": "off",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "explorer.confirmDelete": false
+}
