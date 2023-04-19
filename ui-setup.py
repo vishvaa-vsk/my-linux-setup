@@ -24,7 +24,7 @@ def dynamic_wallpaper():
         os.chdir("Linux_Dynamic_Wallpapers/")
         os.system("./install.sh")
         os.chdir(current_dir)
-        print("Dynamic Wallpapers Applied Suceesfully!..")
+        print("Dynamic Wallpapers installed Suceesfully!.. Go to apperence settings to apply it.")
     else:
         print("Dynamic-Wallpapers.zip not found!..")
 
