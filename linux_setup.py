@@ -156,7 +156,7 @@ class ui_setup:
     def theme_setup():
         current_path = os.getcwd()
         if os.path.exists(f"{current_path}/Files/theme-setup.zip"):
-            os.chdir(f"{current_path}Files/")
+            os.chdir(f"{current_path}/Files/")
             os.system("sudo unzip -q theme-setup.zip")
             os.system("sudo mv .icons .themes ~/")
             print(Purple("Applying Theme!😀...\n"))
