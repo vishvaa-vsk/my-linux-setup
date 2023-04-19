@@ -1,5 +1,6 @@
 import os
 import time
+from linux_setup import Red,Green,Yellow,Purple,Cyan
 
 # making a preference file to restrict installation of snap during apt update..
 def nosnap():
@@ -29,20 +30,20 @@ if os.geteuid() == 0:#checking sudo permission
             os.system(f"sudo snap remove --purge {package}")#removing each snap packages
             os.system("sudo apt remove --autoremove snapd -y")#removing snap itself!
             break
-        print("\033[96m {}\033[00m" .format("Wait ..."))
+        print(Cyan("Wait ..."))
         time.sleep(2)
         nosnap()# calling nosnap preference 
-        print("\033[92m {}\033[00m" .format("Snap removed from system!.."))
-        print("\033[96m {}\033[00m" .format("Updating system one last time!.."))
+        print(Yellow("Snap removed from system!.."))
+        print(Cyan("Updating system one last time!.."))
         os.system("sudo apt update")#updating system
-        print("\033[96m {}\033[00m" .format("Installing software-store without snap!.."))
+        print(Cyan("Installing software-store without snap!.."))
         os.system("sudo apt install --install-suggests gnome-software -y")#Installing gnome-software-store without snap
-        ff_confirm = input("\033[93m {}\033[00m" .format("\nNow firefox has removed from system. Do you want to install it again? [Y/n]"))#asking about firefox reinstallation!
+        ff_confirm = input(Purple("\nNow firefox has removed from system. Do you want to install it again? [Y/n]"))#asking about firefox reinstallation!
         if ff_confirm.lower() == "y":
                 firefox_deb()#installing firefox as non snap package
         else:
-            print("\n\033[92m {}\033[00m".format("Script sucessful \n Happy coding!.."))
+            print(Green("Script sucessful \n Happy coding!.."))
     else:
-        print("\033[91m {}\033[00m" .format("Unexpeted error in removing snap! try again.."))
+        print(Red("Unexpeted error in removing snap! try again.."))
 else:
-    exit("\033[91m {}\033[00m" .format("You need to have root privileges to run this script.\n try running with sudo!"))
+    exit(Red("You need to have root privileges to run this script.\n try running with sudo!"))
