@@ -19,8 +19,8 @@ class system_setup:
         print(Green("Pulse audio installed sucessfully\n"))
 
     def configure_preload():
-        sysmem = int(subprocess.check_output("grep MemTotal /proc/meminfo",shell=True).decode("utf-8")).split()[1]
-        if sysmem >= 4000000:
+        sysmem = str(subprocess.check_output("grep MemTotal /proc/meminfo",shell=True).decode("utf-8")).split()[1]
+        if int(sysmem) >= 4000000:
             os.system("sudo apt install preload -y")
             print(Green("Preload installed sucessfully\n"))
             print(Yellow("Check preload status by 'sudo systemctl status preload'\n"))
