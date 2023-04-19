@@ -173,7 +173,7 @@ class ui_setup:
         current_dir = os.getcwd()
         if os.path.exists(f"{current_dir}/Files/Dynamic-Wallpapers.zip"):
             os.system("unzip -q Dynamic-Wallpapers.zip")
-            os.chdir("Linux_Dynamic_Wallpapers/")
+            os.chdir(f"{current_dir}/Files/Linux_Dynamic_Wallpapers/")
             os.system("./install.sh")
             os.chdir(f"{current_dir}/")
             print(Green("Dynamic Wallpapers installed Suceesfully!.."))
