@@ -74,7 +74,7 @@ class softwares:
         time.sleep(0.1)
         os.system("sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft-archive-keyring.gpg")
         os.system("sudo touch /etc/apt/sources.list.d/vscode.list")
-        os.system("echo 'deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main' | sudo tee -a /etc/apt/sources.list.d/vscode.list")
+        os.system("echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main' | sudo tee -a /etc/apt/sources.list.d/vscode.list")
         
         print(Yellow("Added vscode repo to system!..\n"))
         time.sleep(0.2)
