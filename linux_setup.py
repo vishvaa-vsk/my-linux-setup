@@ -2,11 +2,11 @@ import subprocess
 import os
 import time
 
-def Red(msg): print("\033[91m {}\033[00m" .format("\n"+msg))
-def Green(msg): print("\033[92m {}\033[00m" .format('\n'+msg))
-def Yellow(msg): print("\033[93m {}\033[00m" .format('\n'+msg))
-def Purple(msg): print("\033[95m {}\033[00m" .format('\n'+msg)) 
-def Cyan(msg): print("\033[96m {}\033[00m" .format('\n'+msg))
+def Red(msg): return "\033[91m {}\033[00m" .format("\n"+msg)
+def Green(msg): return "\033[92m {}\033[00m" .format('\n'+msg)
+def Yellow(msg): return "\033[93m {}\033[00m" .format('\n'+msg)
+def Purple(msg): return "\033[95m {}\033[00m" .format('\n'+msg)
+def Cyan(msg):  return "\033[96m {}\033[00m" .format('\n'+msg)
 
 
 class system_setup:
@@ -173,7 +173,7 @@ class ui_setup:
         current_dir = os.getcwd()
         if os.path.exists(f"{current_dir}/Files/Dynamic-Wallpapers.zip"):
             os.system(f"unzip -q {current_dir}/Files/Dynamic-Wallpapers.zip")
-            os.chdir(f"{current_dir}/Files/Linux_Dynamic_Wallpapers/")
+            os.chdir(f"{current_dir}/Linux_Dynamic_Wallpapers/")
             os.system("./install.sh")
             os.chdir(f"{current_dir}/")
             print(Green("Dynamic Wallpapers installed Suceesfully!.."))
@@ -184,7 +184,7 @@ class ui_setup:
     def grub_theme():
         current_dir = os.getcwd()
         if os.path.exists(f"{current_dir}/Files/grub-theme.zip"):
-            os.system("unzip -q grub-theme.zip")
+            os.system(f"unzip -q {current_dir}/Files/grub-theme.zip")
             os.chdir("darkmatter-grub-theme/")
             os.system("sudo python3 darkmatter-theme.py -i")
             time.sleep(0.2)
@@ -219,8 +219,6 @@ class zsh_setup:
         else:
             print(Red("zsh already exists!.."))
 
-
-
 def check_root():# checking 
     if os.geteuid() != 0:
         exit(Red("You need to have root privileges to run this script.\n try running with sudo!"))
@@ -239,7 +237,7 @@ if __name__ == "__main__":
         print(Cyan("\nStarting basic system setup!.. ⏳\n"))
         system_setup.basic_setup()
         lspci = str(subprocess.check_output("lspci -nn | grep VGA", shell=True).decode("utf-8"))
-        if lspci.find("AMD")!= -1:
+        if lspci.find("AMD")!= -1 and check_distro() == "debian":
             system_setup.fix_amdgpu_drivers()
         system_setup.pulseAudio()
         system_setup.configure_preload()
@@ -273,7 +271,7 @@ if __name__ == "__main__":
             curr_dir = os.getcwd()
             os.system(f"sudo rm -r {curr_dir}/Files")
         else:
-            print(Green("Thank you for using the script.\n Check out me on https://github.com/vishvaa-vsk \n\n Happy Computing!..😀" ))      
+            print(Green("Thank you for using the script.\n Check out me on https://github.com/vishvaa-vsk \n\n Happy Computing!..😀\n" ))      
 
     else:
         print(Red("Can't find your distribution type.. this is only for debian based distributions!."))
