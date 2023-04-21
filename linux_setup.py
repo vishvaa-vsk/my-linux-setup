@@ -256,7 +256,10 @@ if __name__ == "__main__":
             pass
         
         print(Yellow("\n Theming your Linux desktop!..🖌️ \n"))
-        desk_env = subprocess.check_output("echo $XDG_CURRENT_DESKTOP",shell=True).decode("utf-8").strip()
+        if check_distro() == "ubuntu":
+            desk_env = subprocess.check_output("echo $XDG_CURRENT_DESKTOP",shell=True).decode("utf-8").split(":")[-1].strip()
+        else:
+            desk_env = subprocess.check_output("echo $XDG_CURRENT_DESKTOP",shell=True).decode("utf-8").strip()
         if desk_env == "GNOME":
             ui_setup.theme_setup()
             ui_setup.dynamic_wallpaper()
