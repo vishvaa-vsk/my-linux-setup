@@ -89,7 +89,7 @@ class softwares:
 
     def nodejs_install():
         choice = int(input(Cyan("Choose one below:\n 1. Install Node.js LTS\n 2. Install Latest Version of Node.js\nEnter choice: ")))
-        if choice ==1:
+        if choice == 1:
             os.system("curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -")
             print(Purple("Installing node.js!..."))
             time.sleep(0.2)
@@ -158,7 +158,7 @@ class ui_setup:
         if os.path.exists(f"{current_path}/Files/theme-setup.zip"):
             os.chdir(f"{current_path}/Files/")
             os.system("sudo unzip -q theme-setup.zip")
-            os.system("sudo mv .icons .themes ~/")
+            os.system("mv .icons .themes ~/")
             print(Purple("Applying Theme!😀...\n"))
             os.chdir(f"{current_path}/")
             os.system("gsettings set org.gnome.desktop.interface gtk-theme Orchis-Dark-Dracula")
@@ -191,34 +191,7 @@ class ui_setup:
             os.chdir(f"{current_dir}/")
         else:
             print(Red("grub-theme.zip not found!.."))
-
-class zsh_setup:
-    def oh_my_zsh():
-        current_sh = str(subprocess.check_output("echo $0",shell=True).decode("utf-8"))
-        if current_sh == "zsh":
-            os.sytem('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
-            print(Green("oh my zsh installed sucessfully!..\n"))
-            time.sleep(0.4)
-            print(Cyan("<<Theming zsh with powerlevel10k theme!>>\n"))
-            if os.path.exists("zsh-setup.zip"):
-                os.system("unzip zsh-setup.zip")
-                os.system("sudo cp .zshrc .zshrc.pre-oh-my-zsh .p10k.zsh ~/")
-            os.system('git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k')
-        else:
-            print(Red("Can't setup oh_my_zsh \n Try this script alone.."))
-
-    def install_zsh():
-        current_sh = str(subprocess.check_output("echo $0",shell=True).decode("utf-8"))
-        if current_sh == "bash":
-            os.system("sudo apt install zsh -y")
-            print(Yellow("zsh installed sucessfully!..\n"))
-            time.sleep(0.3)
-            os.system("sudo chsh -s /bin/zsh")
-            print(Green("Shell changed sucessfully!..\n Logout current session if dosen't work!.."))
-            zsh_setup.oh_my_zsh()
-        else:
-            print(Red("zsh already exists!.."))
-
+    
 def check_root():# checking 
     if os.geteuid() != 0:
         exit(Red("You need to have root privileges to run this script.\n try running with sudo!"))
@@ -235,12 +208,12 @@ if __name__ == "__main__":
     check_root()
     if check_distro() == "debian" or "ubuntu":
         print(Cyan("\nStarting basic system setup!.. ⏳\n"))
-        system_setup.basic_setup()
+        #system_setup.basic_setup()
         lspci = str(subprocess.check_output("lspci -nn | grep VGA", shell=True).decode("utf-8"))
         if lspci.find("AMD")!= -1 and check_distro() == "debian":
             system_setup.fix_amdgpu_drivers()
-        system_setup.pulseAudio()
-        system_setup.configure_preload()
+        #system_setup.pulseAudio()
+        #system_setup.configure_preload()
 
         print(Purple("\nInstalling necessary softwares!..⌛️\n"))
         softwares.brave_browser()
@@ -265,8 +238,6 @@ if __name__ == "__main__":
             ui_setup.dynamic_wallpaper()
         ui_setup.grub_theme()
 
-        print(Green("\n Theming your terminal!..🖌️ \n"))
-        zsh_setup.install_zsh()
 
         print(Green(f"\n The script setted up the {check_distro()} desktop sucessfully"))
         d_ch=input(Yellow("Do you want to remove the files extracted/downloaded during this setup? [Y/n]")).lower()
